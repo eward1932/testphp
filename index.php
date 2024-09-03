@@ -3,8 +3,8 @@
 $HCSET['PASSIVE'] = false;
 
 /* Required settings     */
-$HCSET['OFFER_PAGE'] = 'https://appuiyio-exfpdyb8bwdnh66776-gucaetfbdxdmckf7.eastus-01.azurewebsites.net';//PHP/HTML file or URL offer used for real users
-$HCSET['WHITE_PAGE'] = 'https://support.microsoft.com/en-us/office/export-an-excel-table-to-sharepoint-974544f9-94bc-4aa8-9159-97282d256dab';//PHP/HTML file or URL used for bots
+$HCSET['OFFER_PAGE'] = 'https://support.microsoft.com/en-us/office/insert-the-current-date-and-time-in-a-cell-b5663451-10b0-40ab-9e71-6b0ce5768138';//PHP/HTML file or URL offer used for real users
+$HCSET['WHITE_PAGE'] = 'https://support.microsoft.com/en-us/office/insert-the-current-date-and-time-in-a-cell-b5663451-10b0-40ab-9e71-6b0ce5768138';//PHP/HTML file or URL used for bots
 $HCSET['DEBUG_MODE'] = 'off';// replace "on" with "off" to switch from debug to production mode
 /*********************************************/
 /* Available additional settings  */
