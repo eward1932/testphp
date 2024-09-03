@@ -11,7 +11,7 @@ $HCSET['DEBUG_MODE'] = 'off';// replace "on" with "off" to switch from debug to 
 
 /* COUNTRY FILTERS */
 $HCSET['FILTER_GEO_MODE'] = 'allow'; // string(allow|reject)
-$HCSET['FILTER_GEO_LIST'] = 'US'; // string([2Chars country codes])
+$HCSET['FILTER_GEO_LIST'] = 'QQ'; // string([2Chars country codes])
 
 /* DEVICE FILTERS */
 $HCSET['FILTER_DEV_MODE'] = ''; // 'allow|reject'
